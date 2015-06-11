@@ -49,10 +49,10 @@ def sync_batch(metrics_to_heal):
         sync_start = time()
         sync_percent = float(sync_count) / sync_total * 100
         status_line = "  - Syncing %d of %d metrics. " \
-                      "Avg: %fs  Time Left: %ss (%d%%)" \
+                      "Avg: %fs  Time Left: %ss (%d%%)\r" \
                       % (sync_count, sync_total, sync_avg,
                          sync_remain, sync_percent)
-        print status_line
+        print status_line,
 
         try:
             heal_metric(staging, local)
@@ -121,7 +121,7 @@ def run_batch(metrics_to_sync, remote, local_storage, rsync_options,
 
     total_time = rsync_elapsed + merge_elapsed
 
-    print "    --------------------------------------"
+    print "    -------------------------------------------------------------------------------"
     print "    Rsync time: %ss" % rsync_elapsed
     print "    Merge time: %ss" % merge_elapsed
     print "    Total time: %ss" % total_time
