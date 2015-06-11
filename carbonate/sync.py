@@ -54,7 +54,10 @@ def sync_batch(metrics_to_heal):
                          sync_remain, sync_percent)
         print status_line
 
-        heal_metric(staging, local)
+        try:
+            heal_metric(staging, local)
+        except Exception:
+            logging.warn("Failed to heal / merge whisper file %s into %s. Continuing..." %(staging, local), exc_info=1)
 
         sync_elapsed = time() - sync_start
         sync_avg = sync_elapsed / sync_count
