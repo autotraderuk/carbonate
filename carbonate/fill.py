@@ -95,7 +95,12 @@ def fill_archives(src, dst, startFrom):
         if fromTime >= startFrom:
             continue
 
-        (timeInfo, values) = fetch(dst, fromTime, startFrom)
+        try:
+            (timeInfo, values) = fetch(dst, fromTime, startFrom)
+        except Exception as exception:
+            exception.message = exception.message + ', file was ' + dst
+            raise
+
         (start, end, step) = timeInfo
         gapstart = None
         for v in values:
