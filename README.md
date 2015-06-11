@@ -121,7 +121,7 @@ usage: carbon-sync [-h] [-c CONFIG_FILE] [-C CLUSTER] [-f METRICS_FILE] -s
                    [--source-storage-dir SOURCE_STORAGE_DIR]
                    [--rsync-options [RSYNC_OPTIONS [RSYNC_OPTIONS ...]]]
 
-Sync local metrics using remote nodes in the cluster
+Sync local metrics using remote nodes in the cluster. This process will involve creating temporary files in the locations used by [tempfile.mkstemp()](https://docs.python.org/2/library/tempfile.html#tempfile.mkstemp). If you find that you need to control the location of these files you can set the TMPDIR, TEMP or TMP environment variables.
 
 optional arguments:
   -h, --help            show this help message and exit
